@@ -8,18 +8,22 @@ black = (0,0,0)
 red = (255,0,0)
 green = (0,255,0)
 blue = (0,0,255)
-points = (
-        (10, 0),
-        (55, 0),
-        (55, 375),
-        (10, 375),
+
+def poly(x, y):
+    return (
+        (x + 10, y + 10),
+        (x - 10, y + 10),
+        (x - 10, y - 10),
+        (x + 10, y - 10),
     )
 
+
 gameDisplay = pygame.display.set_mode((800,600))
-gameDisplay.fill(black)
-pygame.draw.polygon(gameDisplay, green, points)
 
 while True:
+    gameDisplay.fill(black)
+    pygame.draw.polygon(gameDisplay, green, poly(*pygame.mouse.get_pos()))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
